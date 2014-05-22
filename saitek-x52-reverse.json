@@ -1,0 +1,71 @@
+{
+  "name": "Saitek X52",
+  "guid": "030000004c0500006802000011010000",
+  "hats": [
+  {
+    "hat": 0,
+    "name": "down",
+    "id": 4
+  },
+  {
+    "hat": 0,
+    "name": "up",
+    "id": 1
+  },
+  {
+    "hat": 0,
+    "name": "left",
+    "id": 8
+  },
+  {
+    "hat": 0,
+    "name": "right",
+    "id": 2
+  },
+  {
+    "hat": 0,
+    "name": "released",
+    "id": 0
+  }
+  ],
+    "axis": [
+    {
+      "name": "right_x",
+      "id": 0
+    },
+    {
+      "name": "right_y",
+      "id": 1
+    },
+    {
+      "name": "left_throttle",
+      "id": 2
+    },
+    {
+      "name": "dunno1",
+      "id": 3
+    },
+    {
+      "name": "left_wheel",
+      "id": 4
+    },
+    {
+      "name": "rotate_anticlockwise",
+      "id": 5
+    },
+    {
+      "name": "rotate_clockwise",
+      "id": 6
+    }
+  ],
+    "buttons": [
+    {
+      "name": "btnxxx",
+      "id": xxx
+    },
+    {
+      "name": "btnxx",
+      "id": xx
+    }
+    ]
+}

@@ -8,6 +8,13 @@ import (
 	"math"
 )
 
+// Angle
+func Angle(x, y int) uint16 {
+	angle := math.Atan2(float64(x), float64(y)) / (math.Pi * 2) * 360
+	direction := math.Mod((360 + 180 + angle), 360)
+	return uint16(direction)
+}
+
 func main() {
 	joystickAdaptor := new(gobotJoystick.JoystickAdaptor)
 	joystickAdaptor.Name = "x52"
@@ -24,20 +31,28 @@ func main() {
 
 	sphero := gobotSphero.NewSphero(spheroAdaptor)
 	sphero.Name = "Sphero"
-
-	speed := 0.0
-	direction := 0.0
+	var (
+		x, y      int
+		direction uint16
+		speed     uint8
+	)
+	x = 1
+	y = 1
+	direction = 0
+	speed = 0
 
 	work := func() {
 		gobot.On(joystick.Events["right_x"], func(data interface{}) {
-			direction = math.Abs(float64(data.(int16) / 128)) //255
+			x = int(data.(int16))
 		})
 		gobot.On(joystick.Events["right_y"], func(data interface{}) {
-			speed = math.Abs(float64(data.(int16) / 91)) // 360
+			y = int(data.(int16))
 		})
 		gobot.Every("0.01s", func() {
-			fmt.Println(speed, direction)
-			sphero.Roll(uint8(speed), uint16(direction))
+			direction = Angle(x, y)
+			speed = uint8(math.Sqrt(float64(x*x+y*y)) / 128) //255
+			fmt.Println(x, y, speed, direction)
+			sphero.Roll(speed, direction)
 		})
 	}
 
