@@ -49,25 +49,25 @@ func main() {
 		})
 		gobot.On(joystick.Events["right_x"], func(data interface{}) {
 			val := float64(data.(int16))
-			if left_stick.x != val {
+			if left_stick.x-val < 500 {
 				left_stick.x = val
 			}
 		})
-		gobot.On(joystick.Events["left_y"], func(data interface{}) {
+		gobot.On(joystick.Events["right_y"], func(data interface{}) {
 			val := float64(data.(int16))
-			if left_stick.y != val {
+			if left_stick.y-val < 500 {
 				left_stick.y = val
 			}
 		})
 		gobot.On(joystick.Events["right_rotate"], func(data interface{}) {
 			val := float64(data.(int16))
-			if right_stick.x != val {
+			if right_stick.x-val < 500 {
 				right_stick.x = val
 			}
 		})
-		gobot.On(joystick.Events["right_throttle"], func(data interface{}) {
+		gobot.On(joystick.Events["left_throttle"], func(data interface{}) {
 			val := float64(data.(int16))
-			if right_stick.y != val {
+			if right_stick.y-val < 100 {
 				right_stick.y = val
 			}
 		})
@@ -101,9 +101,9 @@ func main() {
 				drone.Up(0)
 			}
 
-			if pair.x > 20 {
+			if pair.x > 10 {
 				drone.Clockwise(validatePitch(pair.x, offset))
-			} else if pair.x < -20 {
+			} else if pair.x < -10 {
 				drone.CounterClockwise(validatePitch(pair.x, offset))
 			} else {
 				drone.Clockwise(0)
