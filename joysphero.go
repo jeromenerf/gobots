@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"math"
+
 	"github.com/hybridgroup/gobot"
 	"github.com/hybridgroup/gobot-joystick"
 	"github.com/hybridgroup/gobot-sphero"
-	"math"
 )
 
 // Angle
