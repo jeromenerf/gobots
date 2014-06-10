@@ -47,25 +47,25 @@ func main() {
 		gobot.On(joystick.Events["B_press"], func(data interface{}) {
 			drone.Halt()
 		})
-		gobot.On(joystick.Events["right_rotate"], func(data interface{}) {
+		gobot.On(joystick.Events["right_x"], func(data interface{}) {
 			val := float64(data.(int16))
 			if left_stick.x != val {
 				left_stick.x = val
 			}
 		})
-		gobot.On(joystick.Events["left_throttle"], func(data interface{}) {
+		gobot.On(joystick.Events["left_y"], func(data interface{}) {
 			val := float64(data.(int16))
 			if left_stick.y != val {
 				left_stick.y = val
 			}
 		})
-		gobot.On(joystick.Events["right_x"], func(data interface{}) {
+		gobot.On(joystick.Events["right_rotate"], func(data interface{}) {
 			val := float64(data.(int16))
 			if right_stick.x != val {
 				right_stick.x = val
 			}
 		})
-		gobot.On(joystick.Events["right_y"], func(data interface{}) {
+		gobot.On(joystick.Events["right_throttle"], func(data interface{}) {
 			val := float64(data.(int16))
 			if right_stick.y != val {
 				right_stick.y = val
